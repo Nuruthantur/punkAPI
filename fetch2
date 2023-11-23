@@ -1,0 +1,115 @@
+fetch("https://api.punkapi.com/v2/beers/random")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    updateCarouselContent(data);
+  });
+
+function updateCarouselContent(data) {
+  // Get the carousel item elements
+  const carouselItems = document.querySelectorAll(".carousel-item");
+
+  // Update each carousel item with the fetched data
+  for (let i = 0; i < carouselItems.length; i++) {
+    const carouselItem = carouselItems[i];
+    const cardContainer = carouselItem.querySelector("#card-container-03");
+
+    // Create a new card element
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    // Create a new card body element
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    // Create a new card title element
+    const cardTitle = document.createElement("h5");
+    cardTitle.classList.add("card-title");
+    cardTitle.textContent = data.title; // Assuming the API response includes a 'title' property
+
+    // Create a new card image placeholder element
+    const cardImagePlaceholder = document.createElement("img");
+    cardImagePlaceholder.classList.add("card-img-top");
+    cardImagePlaceholder.alt = "Random image"; // Set an alternative text for the image
+
+    // Update the image placeholder with the fetched image URL
+    cardImagePlaceholder.src = data.image_url; // Assuming the API response includes an 'imageUrl' property
+
+    // Append the card title, image, and body to the card
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardImagePlaceholder);
+
+    // Append the card to the card container
+    cardContainer.appendChild(card);
+  }
+}
+
+window.addEventListener("load", () => {
+  fetch("https://api.punkapi.com/v2/beers/random")
+    .then((response) => response.json())
+    .then((data) => {
+      updateCarouselContent(data);
+    });
+});
+
+//
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+////
+//
+//
+
+const fetchRandomData = async () => {
+  const response = await fetch("my.link/random");
+  const data = await response.json();
+
+  // Extract the desired content from the API response
+  const imageURL = data.image_url;
+  const title = data.title;
+  const description = data.description;
+
+  return { image_url, title, description };
+};
+
+const updateCarouselCard = (cardElement, data) => {
+  const imageElement = cardElement.querySelector("img");
+  imageElement.src = data.image_url;
+
+  const titleElement = cardElement.querySelector(".carousel-caption h1");
+  titleElement.textContent = data.title;
+
+  const descriptionElement = cardElement.querySelector(".carousel-caption p");
+  descriptionElement.textContent = data.description;
+};
+(async () => {
+  const carouselIndicators = document.querySelectorAll(
+    ".carousel-indicators button"
+  );
+  const carouselCards = document.querySelectorAll(".carousel-item");
+
+  // Fetch data for each carousel card and update its content
+  for (let i = 0; i < carouselIndicators.length; i++) {
+    const cardElement = carouselCards[i];
+    const data = await fetchRandomData();
+    updateCarouselCard(cardElement, data);
+  }
+})();
