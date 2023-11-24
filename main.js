@@ -1,5 +1,5 @@
-// WRITING A FUNCTION TO RESIZE THE CAROUSEL HEIGHT
-// UPDATE: DIDN'T WORK
+// WRITING A FUNCTION TO RESIZE THE CAROUSEL HEIGHT ???
+// UPDATE: DIDN'T WORK LOL
 
 // function adjustCarouselHeight() {
 //   // Get the window height
@@ -68,39 +68,39 @@ console.log("fetchData function has run.");
 
 // CREATING A TABLE FOR ALL OBJECTS
 
-// function generateTable(punkData) {
-//   const container = document.getElementById("container");
-//   const table = document.createElement("table");
-//   const heading = document.createElement("tr");
-//   table.appendChild(heading);
-//   const h1 = document.createElement("th");
-//   h1.innerHTML = "Name";
-//   const h2 = document.createElement("th");
-//   h2.innerHTML = "Description";
-//   const h3 = document.createElement("th");
-//   h3.innerHTML = "ABV";
-//   const h4 = document.createElement("th");
-//   h4.innerHTML = "Image";
-//   heading.append(h1, h2, h3, h4);
-//   container.appendChild(table);
-//   for (let i = 0; i < punkData.length; i++) {
-//     const row = document.createElement("tr");
-//     table.appendChild(row);
-//     const nameCell = document.createElement("td");
-//     nameCell.innerHTML = punkData[i].name;
-//     console.log(punkData[i].name);
-//     const descriptionCell = document.createElement("td");
-//     descriptionCell.innerHTML = punkData[i].description;
-//     console.log(punkData[i].description);
-//     const abvCell = document.createElement("td");
-//     abvCell.innerHTML = punkData[i].abv;
-//     const imageCell = document.createElement("td");
-//     const img = document.createElement("img");
-//     img.setAttribute("src", punkData[i].image_url);
-//     imageCell.appendChild(img);
-//     row.append(nameCell, descriptionCell, abvCell, imageCell);
-//   }
-// }
+function generateTable(punkData) {
+  const container = document.getElementById("container");
+  const table = document.createElement("table");
+  const heading = document.createElement("tr");
+  table.appendChild(heading);
+  const h1 = document.createElement("th");
+  h1.innerHTML = "Name";
+  const h2 = document.createElement("th");
+  h2.innerHTML = "Description";
+  const h3 = document.createElement("th");
+  h3.innerHTML = "ABV";
+  const h4 = document.createElement("th");
+  h4.innerHTML = "Image";
+  heading.append(h1, h2, h3, h4);
+  container.appendChild(table);
+  for (let i = 0; i < punkData.length; i++) {
+    const row = document.createElement("tr");
+    table.appendChild(row);
+    const nameCell = document.createElement("td");
+    nameCell.innerHTML = punkData[i].name;
+    console.log(punkData[i].name);
+    const descriptionCell = document.createElement("td");
+    descriptionCell.innerHTML = punkData[i].description;
+    console.log(punkData[i].description);
+    const abvCell = document.createElement("td");
+    abvCell.innerHTML = punkData[i].abv;
+    const imageCell = document.createElement("td");
+    const img = document.createElement("img");
+    img.setAttribute("src", punkData[i].image_url);
+    imageCell.appendChild(img);
+    row.append(nameCell, descriptionCell, abvCell, imageCell);
+  }
+}
 
 // generateTable();
 
@@ -257,3 +257,22 @@ console.log("fetchData function has run.");
 //     body.append(title, paragraph, link);
 //   });
 // }
+
+//
+//
+//
+//
+//
+
+const cardData = [];
+for (let i = 0; i < 3; i++) {
+  fetch("https://api.punkapi.com/v2/beers/random");
+}
+
+function fetchData() {
+  fetch()
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    });
+}
