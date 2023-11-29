@@ -12,11 +12,65 @@
     <title>Filtering</title>
   </head>
   <body>
-    <header data-bs-theme="dark">
-      <!-- fixed-top might become problem for body -->
+    <div class="head-container-outer">
+      <span id="header-image">
+        <img
+          alt="background banner"
+          src="/assets/wp3087084.webp"
+          decoding="async"
+          data-img="fill"
+          style="
+            position: absolute;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100%;
+            max-height: 100%;
+            object-fit: cover;
+          "
+          sizes="100vw"
+        />
+      </span>
+      <div class="head-container-inner">
+        <div class="hci2">
+          <div class="wrapper">
+            <div class="head-content">
+              <a
+                class="cursor-pointer text-center md:w-full h-7 inline-block"
+                href="https://www.brewdog.com/uk/planetbrewdog"
+                ><span
+                  class="truncate ellipsis block text-center md:w-72 m-auto h-7 mt-0.5"
+                  >JOIN Free for Member Prices</span
+                ></a
+              >
+            </div>
+            <div class="head-content" id="head-inner-div">
+              <a
+                class="cursor-pointer text-center md:w-full h-7 inline-block"
+                href="https://www.brewdog.com/uk/delivery-and-returns"
+                ><span
+                  class="truncate ellipsis block text-center md:w-72 m-auto h-7 mt-0.5"
+                  >FREE DELIVERY over $40</span
+                ></a
+              >
+            </div>
+            <div class="head-content">
+              <a
+                class="cursor-pointer text-center md:w-full h-7 inline-block"
+                href="https://www.brewdog.com/uk/nye"
+                ><span
+                  class="truncate ellipsis block text-center md:w-72 m-auto h-7 mt-0.5"
+                  >NYE: Early Bird Ending Friday</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-bs-theme="dark">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./index.html">Punk Breweries</a>
+          <a class="navbar-brand" href="#">Punk Breweries</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -31,12 +85,12 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="./index.html"
+                <a class="nav-link" aria-current="page" href="index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="./link.html">Filtering</a>
+                <a class="nav-link active" href="link.html">Filtering</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -56,7 +110,7 @@
           </div>
         </div>
       </nav>
-    </header>
+    </div>
 
     <main class="position-relative">
       <div>
