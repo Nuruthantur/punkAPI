@@ -1,2 +1,69 @@
 /* there was some stuff here but it's gone now
 *cricket noises* */
+
+/* there was some stuff here but it's gone now
+*cricket noises* */
+
+body {
+    background-color: #ffb6c1;
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+#target {
+    background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2015/07/26/763366/18671f627a2382e91623ba85f6d90522.jpg);
+    background-size: cover;
+}
+
+.col-lg-4 {
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.carouselCaption {
+    background-color: #ffb6c1;
+}
+
+#div-id {
+    background: rgba(225, 113, 197, 0.4);
+    border-radius: 20%;
+    /* opacity: 0.2; */
+    height: 50%;
+    width: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+
+}
+
+.container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        display: flex;
+        flex-flow: column wrap;
+        align-content: center;
+    }
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+}
+
+@media screen and (max-width: 700px) {
+    .row {
+        display: flex;
+        flex-flow: column wrap;
+        align-content: center;
+    }
+}
