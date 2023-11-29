@@ -1,3 +1,43 @@
+function generateCarouselItems(res) {
+  const indicators = document.getElementById("indicators"); // this is the indicators div
+  const target = document.getElementById("target"); // this is the carousel inner div
+  for (let i = 0; i < 3; i++) {
+    // indicators
+    const indicator = document.createElement("button");
+    indicator.setAttribute("type", "button");
+    indicator.setAttribute("data-bs-target", "#myCarousel");
+    indicator.setAttribute("data-bs-slide-to", i.toString());
+    indicator.setAttribute("aria-label", `Slide ${i + 1}`);
+    if (i === 0) {
+      indicator.classList.add("active");
+      indicator.setAttribute("aria-current", "true");
+    }
+    indicators.appendChild(indicator);
+
+    // items
+    const item = document.createElement("div");
+    item.classList.add("carousel-item");
+    if (i === 0) item.classList.add("active");
+    target.appendChild(item);
+
+    // additional div to center content
+    const center = document.createElement("div");
+    center.classList.add("d-flex");
+    center.classList.add("justify-content-center");
+    center.classList.add("p-5");
+    item.appendChild(center);
+
+    // image
+    const img = document.createElement("img");
+    img.src = res[i].image_url;
+    img.style = "height: 75vh";
+
+    // here you can add create div for carousel caption, it would need to be appended to "center"
+
+    center.append(img);
+  }
+}
+
 // WRITING A FUNCTION TO RESIZE THE CAROUSEL HEIGHT ???
 // UPDATE: DIDN'T WORK LOL
 
@@ -39,17 +79,22 @@
 //   })
 //   .catch((e) => console.log(e));
 
-fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
-  .then((res) => res.json())
-  .then((res) => {
-    console.log(res);
-    // generateCards(res);
-    // getRandomImage(res);
-    // addListeners(res);
-  })
-  .catch((e) => console.log(e));
-
-console.log("fetchData function has run.");
+function getData() {
+  fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      generateCarouselItems(res);
+      buildTable(res);
+      // generateCards(res);
+      // getRandomImage(res);
+      // addListeners(res);
+    })
+    // .catch((e) => console.log(e));
+    .catch((error) => console.log(error));
+}
+console.log("getData function has run.");
+getData();
 
 // fetch("https://api.punkapi.com/v2/beers/random")
 //   .then((response) => response.json())
@@ -312,9 +357,96 @@ function generateCarouselItems(res) {
     const img = document.createElement("img");
     img.src = res[i].image_url;
     img.style = "height: 75vh";
+    center.append(img);
 
     // here you can add create div for carousel caption, it would need to be appended to "center"
-
-    center.append(img);
+    const caption = document.createElement("div");
+    const heading1 = document.createElement("h2");
+    const heading2 = document.createElement("h3");
+    const p = document.createElement("p");
+    caption.id = "div-id";
+    // caption.setAttribute("height", "50%");
+    heading1.classList.add("text-align-center");
+    heading1.innerHTML = "Beers of the month'";
+    heading2.classList.add("text-align-center");
+    heading2.innerHTML = res[i].name;
+    p.classList.add("text-align-center");
+    p.innerHTML = res[i].description;
+    caption.append(heading1, heading2, p);
+    center.appendChild(caption);
   }
 }
+
+//
+//
+//
+//
+// CREATE FUNCTION TO DISPLAY TABLE FOR FILTERING
+//
+//
+//
+
+//
+//
+//
+//
+// CREATE FUNCTION TO DISPLAY ROWS
+//
+//
+//
+
+// const elements = document.querySelectorAll(".my-class");
+// const elements = document.querySelectorAll(".my-class");
+
+// for (const element of elements) {
+//   element.style.backgroundColor = "red";
+// }
+
+// FUNCTION TO POPULATE CARDS ON FEATURE
+
+function randomFetches() {
+  const promise1 = fetch("https://api.punkapi.com/v2/beers/random");
+  const promise2 = fetch("https://api.punkapi.com/v2/beers/random");
+  const promise3 = fetch("https://api.punkapi.com/v2/beers/random");
+  const array = [promise1, promise2, promise3];
+  Promise.all(array)
+    .then((values) => {
+      console.log(values);
+      const jsonData = [];
+      for (let i = 0; i < values.length; i++) {
+        jsonData.push(values[i].json());
+      }
+      console.log(jsonData);
+      Promise.all(jsonData).then((r) => {
+        const response = [r[0][0], r[1][0], r[2][0]];
+        for (let i = 0; i < response.length; i++) {
+          document.getElementById("cardName" + i).innerHTML = response[i].name;
+          document.getElementById("cardDescription" + i).innerHTML =
+            response[i].description;
+
+          document.getElementById("cardPicture" + i).innerHTML =
+            response[i].image_url;
+        }
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+
+  fetch("https://api.punkapi.com/v2/beers/random")
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      for (let i = 0; i < response.length; i++) {
+        document.getElementById("cardName" + i).innerHTML = response[i].name;
+        document.getElementById("cardDescription" + i).innerHTML =
+          response[i].description;
+        document.getElementById("cardPicture" + i).innerHTML =
+          response[i].image_url;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+randomFetches();
