@@ -276,3 +276,45 @@ function fetchData() {
       console.log(result);
     });
 }
+
+// Emily's carousel function
+
+function generateCarouselItems(res) {
+  const indicators = document.getElementById("indicators"); // this is the indicators div
+  const target = document.getElementById("target"); // this is the carousel inner div
+  for (let i = 0; i < 6; i++) {
+    // indicators
+    const indicator = document.createElement("button");
+    indicator.setAttribute("type", "button");
+    indicator.setAttribute("data-bs-target", "#myCarousel");
+    indicator.setAttribute("data-bs-slide-to", i.toString());
+    indicator.setAttribute("aria-label", `Slide ${i + 1}`);
+    if (i === 0) {
+      indicator.classList.add("active");
+      indicator.setAttribute("aria-current", "true");
+    }
+    indicators.appendChild(indicator);
+
+    // items
+    const item = document.createElement("div");
+    item.classList.add("carousel-item");
+    if (i === 0) item.classList.add("active");
+    target.appendChild(item);
+
+    // additional div to center content
+    const center = document.createElement("div");
+    center.classList.add("d-flex");
+    center.classList.add("justify-content-center");
+    center.classList.add("p-5");
+    item.appendChild(center);
+
+    // image
+    const img = document.createElement("img");
+    img.src = res[i].image_url;
+    img.style = "height: 75vh";
+
+    // here you can add create div for carousel caption, it would need to be appended to "center"
+
+    center.append(img);
+  }
+}
