@@ -275,39 +275,33 @@ function generateTable(punkData) {
 //     console.log(err);
 //   });
 
-// function generateCards() {
-//   const container = document.getElementById("row");
-//   punkData.forEach(function (punkData) {
-//     const card = document.createElement("div");
-//     card.classList.add("card");
-//     card.setAttribute("style", "width: 18rem"); //"width: 18rem" "col-sm-6"
-//     container.appendChild(card);
-//     const img = document.createElement("img");
-//     img.classList.add("card-img-top");
-//     img.setAttribute("src", punkData.image_url);
-//     const body = document.createElement("div");
-//     body.classList.add("card-body");
-//     card.append(img, body);
-//     const title = document.createElement("h5");
-//     title.classList.add("card-title");
-//     title.innerText = punkData.name;
-//     const paragraph = document.createElement("p");
-//     paragraph.classList.add("card-description");
-//     paragraph.innerText = punkData.description;
-//     const link = document.createElement("a");
-//     link.setAttribute("href", "name.html?code=" + punkData.name);
-//     link.classList.add("btn");
-//     link.classList.add("btn-primary");
-//     link.innerText = "More Information";
-//     body.append(title, paragraph, link);
-//   });
-// }
-
-//
-//
-//
-//
-//
+function generateCards() {
+  const container = document.getElementById("row");
+  punkData.forEach(function (punkData) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("style", "width: 18rem"); //"width: 18rem" "col-sm-6"
+    container.appendChild(card);
+    const img = document.createElement("img");
+    img.classList.add("card-img-top");
+    img.setAttribute("src", punkData.image_url);
+    const body = document.createElement("div");
+    body.classList.add("card-body");
+    card.append(img, body);
+    const title = document.createElement("h5");
+    title.classList.add("card-title");
+    title.innerText = punkData.name;
+    const paragraph = document.createElement("p");
+    paragraph.classList.add("card-description");
+    paragraph.innerText = punkData.description;
+    const link = document.createElement("a");
+    link.setAttribute("href", "name.html?code=" + punkData.name);
+    link.classList.add("btn");
+    link.classList.add("btn-primary");
+    link.innerText = "More Information";
+    body.append(title, paragraph, link);
+  });
+}
 
 const cardData = [];
 for (let i = 0; i < 3; i++) {
@@ -322,7 +316,7 @@ function fetchData() {
     });
 }
 
-// Emily's carousel function
+// carousel function
 
 function generateCarouselItems(res) {
   const indicators = document.getElementById("indicators"); // this is the indicators div
@@ -359,7 +353,7 @@ function generateCarouselItems(res) {
     img.style = "height: 75vh";
     center.append(img);
 
-    // here you can add create div for carousel caption, it would need to be appended to "center"
+    // create div for carousel caption
     const caption = document.createElement("div");
     const heading1 = document.createElement("h2");
     const heading2 = document.createElement("h3");
@@ -378,21 +372,11 @@ function generateCarouselItems(res) {
 }
 
 //
-//
-//
-//
 // CREATE FUNCTION TO DISPLAY TABLE FOR FILTERING
-//
-//
 //
 
 //
-//
-//
-//
 // CREATE FUNCTION TO DISPLAY ROWS
-//
-//
 //
 
 // const elements = document.querySelectorAll(".my-class");

@@ -10,7 +10,7 @@ function fetchData() {
     .catch((error) => console.log(error));
   console.log("function beerNames has run");
 }
-// console.log("fetchData function has run.");
+console.log("fetchData function has run.");
 fetchData();
 
 function buildTable(result) {
@@ -32,7 +32,7 @@ function buildTable(result) {
 }
 
 //
-//
+//  BEEROPTIONS FUNCTION
 //
 
 function fillBeerOptions(result) {
