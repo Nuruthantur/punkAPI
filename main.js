@@ -305,7 +305,7 @@ function fetchData() {
     });
 }
 
-// carousel function
+// CAROUSEL FUNCTION GOES HERE
 
 function generateCarouselItems(res) {
   const indicators = document.getElementById("indicators"); // this is the indicators div
