@@ -1,6 +1,6 @@
 function generateCarouselItems(res) {
-  const indicators = document.getElementById("indicators"); // this is the indicators div
-  const target = document.getElementById("target"); // this is the carousel inner div
+  const indicators = document.getElementById("indicators"); // indicators div
+  const target = document.getElementById("target"); // carousel inner div
   for (let i = 0; i < 3; i++) {
     // indicators
     const indicator = document.createElement("button");
@@ -13,20 +13,17 @@ function generateCarouselItems(res) {
       indicator.setAttribute("aria-current", "true");
     }
     indicators.appendChild(indicator);
-
     // items
     const item = document.createElement("div");
     item.classList.add("carousel-item");
     if (i === 0) item.classList.add("active");
     target.appendChild(item);
-
     // additional div to center content
     const center = document.createElement("div");
     center.classList.add("d-flex");
     center.classList.add("justify-content-center");
     center.classList.add("p-5");
     item.appendChild(center);
-
     // image
     const img = document.createElement("img");
     img.src = res[i].image_url;
@@ -38,7 +35,7 @@ function generateCarouselItems(res) {
   }
 }
 
-// WRITING A FUNCTION TO RESIZE THE CAROUSEL HEIGHT ???
+// ??? WRITING A FUNCTION TO RESIZE THE CAROUSEL HEIGHT ??? //
 // UPDATE: DIDN'T WORK LOL
 
 // function adjustCarouselHeight() {
@@ -71,13 +68,6 @@ function generateCarouselItems(res) {
 //     .catch(function (error) {
 //       console.log("error", error);
 //     });
-
-// fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
-//   .then((res) => res.json())
-//   .then((res) => {
-//     generateCards(res);
-//   })
-//   .catch((e) => console.log(e));
 
 function getData() {
   fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
@@ -151,33 +141,33 @@ function generateTable(punkData) {
 
 // CREATING CARDS FROM HERE
 
-// function generateCards() {
-//   const container = document.getElementById("row");
-//   punkData.forEach(function (punkData) {
-//     const card = document.createElement("div");
-//     card.classList.add("card");
-//     card.setAttribute("style", "width: 18rem"); //"width: 18rem" "col-sm-6"
-//     container.appendChild(card);
-//     const img = document.createElement("img");
-//     img.classList.add("card-img-top");
-//     img.setAttribute("src", punkData.image_url);
-//     const body = document.createElement("div");
-//     body.classList.add("card-body");
-//     card.append(img, body);
-//     const title = document.createElement("h5");
-//     title.classList.add("card-title");
-//     title.innerText = punkData.name;
-//     const paragraph = document.createElement("p");
-//     paragraph.classList.add("card-description");
-//     paragraph.innerText = punkData.description;
-//     const link = document.createElement("a");
-//     link.setAttribute("href", "name.html?code=" + punkData.name);
-//     link.classList.add("btn");
-//     link.classList.add("btn-primary");
-//     link.innerText = "More Information";
-//     body.append(title, paragraph, link);
-//   });
-// }
+function generateCards() {
+  const container = document.getElementById("row");
+  punkData.forEach(function (punkData) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("style", "width: 18rem"); //"width: 18rem" "col-sm-6"
+    container.appendChild(card);
+    const img = document.createElement("img");
+    img.classList.add("card-img-top");
+    img.setAttribute("src", punkData.image_url);
+    const body = document.createElement("div");
+    body.classList.add("card-body");
+    card.append(img, body);
+    const title = document.createElement("h5");
+    title.classList.add("card-title");
+    title.innerText = punkData.name;
+    const paragraph = document.createElement("p");
+    paragraph.classList.add("card-description");
+    paragraph.innerText = punkData.description;
+    const link = document.createElement("a");
+    link.setAttribute("href", "name.html?code=" + punkData.name);
+    link.classList.add("btn");
+    link.classList.add("btn-primary");
+    link.innerText = "More Information";
+    body.append(title, paragraph, link);
+  });
+}
 
 // generateCards();
 
@@ -232,7 +222,6 @@ function generateTable(punkData) {
 //   .then((data) => {
 //     const card = document.createElement("div");
 //     card.classList.add("card");
-
 //     const cardBody = document.createElement("div");
 //     cardBody.classList.add("card-body");
 
