@@ -115,3 +115,11 @@ padding: 0px 25px 0px 25px;
     border-left:1px solid black;
     border-right: 1px solid black;
 }
+
+#beerSelect{
+    width: 20%;
+}
+
+#foodPairingSelect{
+width: 20%;
+}
