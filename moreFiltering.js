@@ -71,15 +71,15 @@ function fillFoodPairings(result) {
 function createListeners(beerArray) {
   // PUTTING THE INPUTS IN  //
   const beerSelect = document.getElementById("beerNameSelect");
-  const foodPairingSelect = document.getElementById("foodPairingSelect");
-  const allInputs = [foodPairingSelect, beerSelect];
+  const beerFoodPairing = document.getElementById("foodPairingSelect");
+  const allInputs = [beerFoodPairing, beerSelect];
   // SELECT LISTENER FOR beerName !!!
   beerSelect.addEventListener("change", (event) => {
     checkingAllValues(allInputs);
     const resultBeer = filterArrayByName(event.target.value, beerArray);
-    if (foodPairingSelect.value !== "") {
+    if (beerFoodPairing.value !== "") {
       const resultBeerAndFood = filterArrayByFood(
-        foodPairingSelect.value,
+        beerFoodPairing.value,
         resultBeer
       );
       checkForFood(resultBeerAndFood);
@@ -88,7 +88,7 @@ function createListeners(beerArray) {
     }
   });
 
-  //  FOOD PAIRING SELECT LISTENER  //
+  //    FOOD PAIRING SELECT LISTENER    //
   beerFoodPairing.addEventListener("change", (event) => {
     checkingAllValues(allInputs);
     const resultFood = filterArrayByFood(event.target.value, beerArray);
@@ -100,7 +100,7 @@ function createListeners(beerArray) {
     }
   });
 
-  //    CLEAR BUTTON GOES HERE  //
+  //    CLEAR BUTTON GOES HERE    //
   const button = document.querySelector("button");
   button.addEventListener("click", () => {
     beerFoodPairing.value = "";
@@ -125,11 +125,17 @@ function filterArrayByFood(selectedValue, beerArray) {
     return beerArray;
   } else {
     const filteredByFood = beerArray.filter((b) => {
-      return b.name === selectedValue;
+      return b.food_pairing === selectedValue;
     });
     return filteredByFood;
   }
 }
+
+// function 2 for filtering by food
+
+// function filterArrayByFood(selectedFood, beerArray) {
+//   const filteredByFood = beerArray.filter((g) => {});
+// }
 
 function checkForFood(result) {
   if (result.length === 0) {
