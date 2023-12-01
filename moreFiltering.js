@@ -101,9 +101,9 @@ function createListeners(beerArray) {
   });
 
   //    CLEAR BUTTON GOES HERE    //
-  const button = document.querySelector("button");
+  const button = document.getElementById("clearButton");
   button.addEventListener("click", () => {
-    beerFoodPairing.value = "";
+    beerFoodPairing.value = "all";
     beerSelect.value = "all";
     buildTable(beerArray);
   });
@@ -130,6 +130,10 @@ function filterArrayByFood(selectedValue, beerArray) {
     return filteredByFood;
   }
 }
+
+// const filteredBeers = filterArrayByFood(selectedValue, beerArray);
+// const filteredBeersString = filteredBeers.join(", "); // Convert the array to a string with comma separation
+// console.log(filteredBeersString);
 
 // function 2 for filtering by food
 
