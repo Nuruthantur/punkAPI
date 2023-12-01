@@ -8,8 +8,8 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <title>Promises, Dates + Filtering</title>
     <link rel="stylesheet" href="global.css" />
-    <title>Homepage</title>
   </head>
   <body>
     <header>
@@ -106,15 +106,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Home</a
-                  >
+                  <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="./link.html">Filtering</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="moreFiltering.html"
+                  <a class="nav-link active" href="moreFiltering.html"
                     >All the Filtering!</a
                   >
                 </li>
@@ -136,81 +134,26 @@
       </div>
     </header>
 
-    <div
-      id="myCarousel"
-      class="carousel slide mb-6 bg-image"
-      data-bs-ride="carousel"
-    >
-      <div id="indicators" class="carousel-indicators"></div>
-      <div id="target" class="carousel-inner"></div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+    <h1>So much filtering, muahahaha!</h1>
+    <select id="beerNameSelect">
+      <option value="all">Beer by Name</option>
+    </select>
+    <select id="foodPairingSelect">
+      <option value="all">Food Pairings</option>
+    </select>
 
-    <!-- THREE ROWS -->
+    <button>Clear</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Food Pairings</th>
+        </tr>
+      </thead>
+      <tbody id="content"></tbody>
+    </table>
 
-    <div class="container">
-      <div class="row">
-        <div>
-          <div class="card text-center align-items-center">
-            <div class="card-header fs-5">
-              <img src="" class="card-img-top" alt="" id="cardPicture0" />
-            </div>
-            <div class="card-body">
-              <p class="card-text" id="cardDescription0"></p>
-              <h5 class="card-title" id="cardName0"></h5>
-            </div>
-            <a href="#" class="btn btn-outline-secondary">Do Something!</a>
-          </div>
-        </div>
-        <div>
-          <div class="card text-center align-items-center">
-            <div class="card-header fs-5">
-              <img src="..." class="card-img-top" alt="..." id="cardPicture1" />
-            </div>
-            <div class="card-body">
-              <p class="card-text" id="cardDescription1"></p>
-              <h5 class="card-title" id="cardName1"></h5>
-            </div>
-            <a href="#" class="btn btn-outline-secondary">Do Something!</a>
-          </div>
-        </div>
-        <div>
-          <div class="card text-center align-items-center">
-            <div class="card-header fs-5">
-              <img src="..." class="card-img-top" alt="..." id="cardPicture2" />
-            </div>
-            <div class="card-body">
-              <p class="card-text" id="cardDescription2"></p>
-              <h5 class="card-title" id="cardName2"></h5>
-            </div>
-            <a href="#" class="btn btn-outline-secondary">Do Something!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <script src="main.js"></script>
+    <script src="moreFiltering.js"></script>
   </body>
 </html>
