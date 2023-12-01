@@ -39,7 +39,7 @@ function noData() {
   const tr = document.createElement("tr");
   tbody.appendChild(tr);
   const message = document.createElement("td");
-  message.innerHTML = "no data available :(";
+  message.innerHTML = "no data available :'(";
   message.setAttribute("colspan", "3");
   tr.appendChild(message);
 }
@@ -69,70 +69,77 @@ function fillFoodPairings(result) {
 }
 
 function createListeners(beerArray) {
-  // PUTTING THE INPUTS IN
+  // PUTTING THE INPUTS IN  //
   const beerSelect = document.getElementById("beerNameSelect");
-  const beerFoodPairing = document.getElementById("beerFoodPairingSelect");
-  //   const allInputs = [beerFoodPairing, beerSelect];
-  //   // competitions select listener
-  //   beerSelect.addEventListener("change", (event) => {
-  //     checkingAllValues(allInputs); // I could do this to filter everything in a single step
-  //     const resultComp = filterArrayByComp(event.target.value, beerArray);
-  //     if (beerFoodPairing.value !== "") {
-  //       const resultCompAndDate = filterArrayByDate(beerFoodPairing.value, resultComp);
-  //       checkForGames(resultCompAndDate);
-  //     } else {
-  //       buildTable(resultComp);
-  //     }
-  //   });
-  //   // dates select listener
-  //   beerFoodPairing.addEventListener("change", (event) => {
-  //     checkingAllValues(allInputs);
-  //     const resultDate = filterArrayByDate(event.target.value, beerArray);
-  //     if (beerSelect.value !== "") {
-  //       const resultDateAndComp = filterArrayByComp(beerSelect.value, resultDate);
-  //       checkForGames(resultDateAndComp);
-  //     } else {
-  //       checkForGames(resultDate);
-  //     }
-  //   });
-  //   // clear button
-  //   const button = document.querySelector("button");
-  //   button.addEventListener("click", () => {
-  //     beerFoodPairing.value = "";
-  //     beerSelect.value = "all";
-  //     buildTable(beerArray);
-  //   });
+  const foodPairingSelect = document.getElementById("foodPairingSelect");
+  const allInputs = [foodPairingSelect, beerSelect];
+  // SELECT LISTENER FOR beerName !!!
+  beerSelect.addEventListener("change", (event) => {
+    checkingAllValues(allInputs);
+    const resultBeer = filterArrayByName(event.target.value, beerArray);
+    if (foodPairingSelect.value !== "") {
+      const resultBeerAndFood = filterArrayByFood(
+        foodPairingSelect.value,
+        resultBeer
+      );
+      checkForFood(resultBeerAndFood);
+    } else {
+      buildTable(resultBeer);
+    }
+  });
+
+  //  FOOD PAIRING SELECT LISTENER  //
+  beerFoodPairing.addEventListener("change", (event) => {
+    checkingAllValues(allInputs);
+    const resultFood = filterArrayByFood(event.target.value, beerArray);
+    if (beerSelect.value !== "") {
+      const resultFoodAndBeer = filterArrayByName(beerSelect.value, resultFood);
+      checkForFood(resultFoodAndBeer);
+    } else {
+      checkForFood(resultFood);
+    }
+  });
+
+  //    CLEAR BUTTON GOES HERE  //
+  const button = document.querySelector("button");
+  button.addEventListener("click", () => {
+    beerFoodPairing.value = "";
+    beerSelect.value = "all";
+    buildTable(beerArray);
+  });
 }
 
-// function filterArrayByComp(selectedValue, gamesArray) {
-//   if (selectedValue === "all") {
-//     return gamesArray;
-//   } else {
-//     const filteredByComp = gamesArray.filter((g) => {
-//       return g.competition === selectedValue;
-//     });
-//     return filteredByComp;
-//   }
-// }
+function filterArrayByName(selectedValue, beerArray) {
+  if (selectedValue === "all") {
+    return beerArray;
+  } else {
+    const filteredByName = beerArray.filter((b) => {
+      return b.name === selectedValue;
+    });
+    return filteredByName;
+  }
+}
 
-// function filterArrayByDate(selectedDate, gamesArray) {
-//   const formattedDate = formatDate(selectedDate);
-//   const filteredByDate = gamesArray.filter((g) => {
-//     const formatGameDate = formatDate(g.date);
-//     return formatGameDate === formattedDate;
-//   });
-//   return filteredByDate;
-// }
+function filterArrayByFood(selectedValue, beerArray) {
+  if (selectedValue === "all") {
+    return beerArray;
+  } else {
+    const filteredByFood = beerArray.filter((b) => {
+      return b.name === selectedValue;
+    });
+    return filteredByFood;
+  }
+}
 
-// function checkForGames(result) {
-//   if (result.length === 0) {
-//     noData();
-//   } else {
-//     buildTable(result);
-//   }
-// }
+function checkForFood(result) {
+  if (result.length === 0) {
+    noData();
+  } else {
+    buildTable(result);
+  }
+}
 
-// function checkingAllValues(allInputs) {
-//   const allValues = allInputs.map((input) => input.value);
-//   console.log(allValues);
-// }
+function checkingAllValues(allInputs) {
+  const allValues = allInputs.map((input) => input.value);
+  console.log(allValues);
+}
