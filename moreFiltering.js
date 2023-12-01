@@ -119,7 +119,7 @@ function filterArrayByName(selectedValue, beerArray) {
     return filteredByName;
   }
 }
-
+// YOU NEED TO LOOP DUMMY! IT'S AN ARRAY AND NOT A STRING!!!
 function filterArrayByFood(selectedValue, beerArray) {
   if (selectedValue === "all") {
     return beerArray;
