@@ -72,7 +72,8 @@ function createListeners(beerArray) {
   // PUTTING THE INPUTS IN  //
   const beerSelect = document.getElementById("beerNameSelect");
   const beerFoodPairing = document.getElementById("foodPairingSelect");
-  const allInputs = [beerFoodPairing, beerSelect];
+  const allInputs = [beerSelect, beerFoodPairing];
+
   // SELECT LISTENER FOR beerName !!!
   beerSelect.addEventListener("change", (event) => {
     checkingAllValues(allInputs);
@@ -97,6 +98,7 @@ function createListeners(beerArray) {
       checkForFood(resultFoodAndBeer);
     } else {
       checkForFood(resultFood);
+      // buildTable(resultFood);
     }
   });
 

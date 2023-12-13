@@ -29,45 +29,9 @@ function generateCarouselItems(res) {
     img.src = res[i].image_url;
     img.style = "height: 75vh";
 
-    // here you can add create div for carousel caption, it would need to be appended to "center"
-
     center.append(img);
   }
 }
-
-// ??? WRITING A FUNCTION TO RESIZE THE CAROUSEL HEIGHT ??? //
-// UPDATE: DIDN'T WORK LOL
-
-// function adjustCarouselHeight() {
-//   // Get the window height
-//   const windowHeight = window.innerHeight;
-//   // Calculate the carousel height as 80% of the window height
-//   const carouselHeight = windowHeight * 0.9;
-//   // Set the height of the carousel inner container
-//   const carouselInnerElement = document.querySelector(".carousel-inner");
-//   carouselInnerElement.style.height = `${carouselHeight}px`;
-// }
-
-// ADD EVENT LISTENER TO RESIZE AUTOMATICALLY
-// window.addEventListener("resize", adjustCarouselHeight);
-// adjustCarouselHeight();
-
-// console.log("this is all the beer data", punkData);
-// console.log("this is all the beer data", beerArray);
-
-// function fetchData() {
-//   fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
-//     .then(function (response) {
-//       console.log("response", response);
-//       return response.json();
-//     })
-//     .then(function (result) {
-//       console.log("result", result);
-//       generateTable(result);
-//     })
-//     .catch(function (error) {
-//       console.log("error", error);
-//     });
 
 function getData() {
   fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
@@ -76,30 +40,12 @@ function getData() {
       console.log(res);
       generateCarouselItems(res);
       buildTable(res);
-      // generateCards(res);
-      // getRandomImage(res);
-      // addListeners(res);
     })
-    // .catch((e) => console.log(e));
+
     .catch((error) => console.log(error));
 }
 console.log("getData function has run.");
 getData();
-
-// fetch("https://api.punkapi.com/v2/beers/random")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(data);
-//     // updateCarouselContent(data);
-//   });
-
-// window.addEventListener("load", () => {
-//   fetch("https://api.punkapi.com/v2/beers/random")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       // updateCarouselContent(data);
-//     });
-// });
 
 // CREATING A TABLE FOR ALL OBJECTS
 
@@ -170,99 +116,6 @@ function generateCards() {
 }
 
 // generateCards();
-
-// write an if loop for keywords so that you can search for good food pairings
-
-// FILTER FOR RANDOM BEER IMAGE
-
-// function getRandomImage(data) {
-//   const randomItem = Math.floor(Math.random() * data.length);
-//   const randomImageURL = data[randomItem].image_url;
-//   const image = new Image();
-//   image.src = randomImageURL;
-// document.body.appendChild(image);
-// }
-// console.log(getRandomImage);
-
-// creation of random item
-
-// getRandomItem(data) => Math.floor(Math.random() * data.length);
-
-// fetch("https://test.api.goes.here")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     // Select a random item from the fetched data
-//     const randomIndex = Math.floor(Math.random() * data.length);
-//     const randomItem = data[randomIndex];
-
-//     // Update the carousel content
-//     const carousel = document.querySelector(".carousel");
-//     const slideContent = document.createElement("div");
-//     slideContent.classList.add("carousel-item");
-
-//     // Create carousel slide content
-//     const imageURL = randomItem.imageURL;
-//     const image = new Image();
-//     image.src = imageURL;
-//     image.alt = randomItem.description;
-
-//     const caption = document.createElement("p");
-//     caption.textContent = randomItem.name;
-
-//     slideContent.appendChild(image);
-//     slideContent.appendChild(caption);
-
-//     carousel.appendChild(slideContent);
-//   });
-
-// FETCH RANDOM ENDPOINT
-
-// fetch("https://api.punkapi.com/v2/beers/random")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     const card = document.createElement("div");
-//     card.classList.add("card");
-//     const cardBody = document.createElement("div");
-//     cardBody.classList.add("card-body");
-
-//     const cardTitle = document.createElement("h5");
-//     cardTitle.classList.add("card-title");
-//     cardTitle.textContent = data.title; // Assuming the API response includes a 'title' property
-
-//     const cardImagePlaceholder = document.createElement("img");
-//     cardImagePlaceholder.classList.add("card-img-top");
-//     cardImagePlaceholder.alt = "Try a new one"; // Set an alternative text for the image
-
-//     // Update the image placeholder with the fetched image URL
-//     cardImagePlaceholder.src = data.image_url; // Assuming the API response includes an 'imageUrl' property
-
-//     cardBody.appendChild(cardTitle);
-//     cardBody.appendChild(cardImagePlaceholder);
-
-//     card.appendChild(cardBody);
-
-//     const cardContainer = document.getElementById("card-container");
-//     cardContainer.appendChild(card);
-//   });
-
-// fetch("https://api.punkapi.com/v2/beers/random")
-//   .then((response) => response.json())
-//   .then((response) => {
-//     console.log(response);
-//     for (let i = 0; i < 3; i++) {
-//       document.getElementById("tags" + i).innerHTML = response[i].tags;
-//       //   const quote = document.getElementById("quote" + i);
-//       //   quote.innerHTML = response[i].content;
-//       //   console.log(quote);
-//       document.getElementById("name" + i).innerHTML = response[i].name;
-//       document.getElementById("description" + i).innerHTML =
-//         response[i].description;
-//       document.getElementById("image" + i).innerHTML = response[i].image_url;
-//     }
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
 
 function generateCards() {
   const container = document.getElementById("row");
@@ -360,27 +213,13 @@ function generateCarouselItems(res) {
   }
 }
 
-//
-// CREATE FUNCTION TO DISPLAY TABLE FOR FILTERING
-//
-
-//
-// CREATE FUNCTION TO DISPLAY ROWS
-//
-
-// const elements = document.querySelectorAll(".my-class");
-// const elements = document.querySelectorAll(".my-class");
-
-// for (const element of elements) {
-//   element.style.backgroundColor = "red";
-// }
-
 // FUNCTION TO POPULATE CARDS ON FEATURE
 
 function randomFetches() {
   const promise1 = fetch("https://api.punkapi.com/v2/beers/random");
   const promise2 = fetch("https://api.punkapi.com/v2/beers/random");
   const promise3 = fetch("https://api.punkapi.com/v2/beers/random");
+
   const array = [promise1, promise2, promise3];
   Promise.all(array)
     .then((values) => {
@@ -423,3 +262,81 @@ function randomFetches() {
     });
 }
 randomFetches();
+
+// function randomFetches() {
+//   const promise1 = fetch("https://api.punkapi.com/v2/beers/random");
+//   const promise2 = fetch("https://api.punkapi.com/v2/beers/random");
+//   const promise3 = fetch("https://api.punkapi.com/v2/beers/random");
+//   const array = [promise1, promise2, promise3];
+//   Promise.all(array)
+//     .then((values) => {
+//       console.log(values);
+//       const jsonData = [];
+//       for (let i = 0; i < values.length; i++) {
+//         jsonData.push(values[i].json());
+//       }
+//       console.log(jsonData);
+//       Promise.all(jsonData).then((r) => {
+//         const response = [r[0][0], r[1][0], r[2][0]];
+//         for (let i = 0; i < response.length; i++) {
+//           document.getElementById("cardName" + i).innerHTML = response[i].name;
+//           document.getElementById("cardDescription" + i).innerHTML =
+//             response[i].description;
+
+//           // Call the fetchAndInsertThreeRandomImages function to fetch and insert images
+//           fetchAndInsertThreeRandomImages();
+//         }
+//       });
+//     })
+//     .catch((e) => {
+//       console.log(e);
+//     });
+
+//   fetch("https://api.punkapi.com/v2/beers/random")
+//     .then((response) => response.json())
+//     .then((response) => {
+//       console.log(response);
+//       for (let i = 0; i < response.length; i++) {
+//         document.getElementById("cardName" + (i + 3)).innerHTML =
+//           response[i].name;
+//         document.getElementById("cardDescription" + (i + 3)).innerHTML =
+//           response[i].description;
+//         document.getElementById("cardPicture" + (i + 3)).innerHTML =
+//           response[i].image_url;
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
+// randomFetches();
+
+// TRY TO DO ONE FETCH INSTEAD WITH PROMISE ALL
+
+// function randomFetches() {
+//   Promise.all([
+//     fetch("https://api.punkapi.com/v2/beers/random"),
+//     fetch("https://api.punkapi.com/v2/beers/random"),
+//     fetch("https://api.punkapi.com/v2/beers/random"),
+//   ])
+//     .then((responses) => {
+//       const jsonData = [];
+//       for (const response of responses) {
+//         jsonData.push(response.json());
+//       }
+//       const response = jsonData[0][0];
+//       for (let i = 0; i < 3; i++) {
+//         document.getElementById(`cardName${i + 1}`).innerHTML =
+//           response[i].name;
+//         document.getElementById(`cardDescription${i + 1}`).innerHTML =
+//           response[i].description;
+//         document.getElementById(`cardPicture${i + 1}`).innerHTML =
+//           response[i].image_url;
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// }
+
+// randomFetches();
