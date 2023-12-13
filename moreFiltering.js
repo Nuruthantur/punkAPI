@@ -15,6 +15,19 @@ async function fetchData() {
 }
 fetchData();
 
+// DOES THE SAME AS FUNCTION ABOVE :D not catch error though :/
+// async function fetchAndProcessData() {
+//   const beerData = await fetch(
+//     "https://api.punkapi.com/v2/beers?page=2&per_page=80"
+//   ).then((response) => response.json());
+//   buildTable(beerData);
+//   fillBeerNames(beerData);
+//   fillFoodPairings(beerData);
+//   createListeners(beerData);
+//   console.log(error);
+// }
+// fetchAndProcessData();
+
 function buildTable(result) {
   const tbody = document.getElementById("content");
   tbody.innerHTML = "";
