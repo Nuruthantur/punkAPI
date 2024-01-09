@@ -1,37 +1,37 @@
-function generateCarouselItems(res) {
-  const indicators = document.getElementById("indicators"); // indicators div
-  const target = document.getElementById("target"); // carousel inner div
-  for (let i = 0; i < 3; i++) {
-    // indicators
-    const indicator = document.createElement("button");
-    indicator.setAttribute("type", "button");
-    indicator.setAttribute("data-bs-target", "#myCarousel");
-    indicator.setAttribute("data-bs-slide-to", i.toString());
-    indicator.setAttribute("aria-label", `Slide ${i + 1}`);
-    if (i === 0) {
-      indicator.classList.add("active");
-      indicator.setAttribute("aria-current", "true");
-    }
-    indicators.appendChild(indicator);
-    // items
-    const item = document.createElement("div");
-    item.classList.add("carousel-item");
-    if (i === 0) item.classList.add("active");
-    target.appendChild(item);
-    // additional div to center content
-    const center = document.createElement("div");
-    center.classList.add("d-flex");
-    center.classList.add("justify-content-center");
-    center.classList.add("p-5");
-    item.appendChild(center);
-    // image
-    const img = document.createElement("img");
-    img.src = res[i].image_url;
-    img.style = "height: 75vh";
+// function generateCarouselItems(res) {
+//   const indicators = document.getElementById("indicators"); // indicators div
+//   const target = document.getElementById("target"); // carousel inner div
+//   for (let i = 0; i < 3; i++) {
+//     // indicators
+//     const indicator = document.createElement("button");
+//     indicator.setAttribute("type", "button");
+//     indicator.setAttribute("data-bs-target", "#myCarousel");
+//     indicator.setAttribute("data-bs-slide-to", i.toString());
+//     indicator.setAttribute("aria-label", `Slide ${i + 1}`);
+//     if (i === 0) {
+//       indicator.classList.add("active");
+//       indicator.setAttribute("aria-current", "true");
+//     }
+//     indicators.appendChild(indicator);
+//     // items
+//     const item = document.createElement("div");
+//     item.classList.add("carousel-item");
+//     if (i === 0) item.classList.add("active");
+//     target.appendChild(item);
+//     // additional div to center content
+//     const center = document.createElement("div");
+//     center.classList.add("d-flex");
+//     center.classList.add("justify-content-center");
+//     center.classList.add("p-5");
+//     item.appendChild(center);
+//     // image
+//     const img = document.createElement("img");
+//     img.src = res[i].image_url;
+//     img.style = "height: 75vh";
 
-    center.append(img);
-  }
-}
+//     center.append(img);
+//   }
+// }
 
 function getData() {
   fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
@@ -48,7 +48,6 @@ console.log("getData function has run.");
 getData();
 
 // CREATING A TABLE FOR ALL OBJECTS
-
 function generateTable(punkData) {
   const container = document.getElementById("container");
   const table = document.createElement("table");
@@ -201,7 +200,6 @@ function generateCarouselItems(res) {
     const heading2 = document.createElement("h3");
     const p = document.createElement("p");
     caption.id = "div-id";
-    // caption.setAttribute("height", "50%");
     heading1.classList.add("text-align-center");
     heading1.innerHTML = "Beers of the month'";
     heading2.classList.add("text-align-center");
@@ -265,81 +263,3 @@ function randomFetches() {
     });
 }
 randomFetches();
-
-// function randomFetches() {
-//   const promise1 = fetch("https://api.punkapi.com/v2/beers/random");
-//   const promise2 = fetch("https://api.punkapi.com/v2/beers/random");
-//   const promise3 = fetch("https://api.punkapi.com/v2/beers/random");
-//   const array = [promise1, promise2, promise3];
-//   Promise.all(array)
-//     .then((values) => {
-//       console.log(values);
-//       const jsonData = [];
-//       for (let i = 0; i < values.length; i++) {
-//         jsonData.push(values[i].json());
-//       }
-//       console.log(jsonData);
-//       Promise.all(jsonData).then((r) => {
-//         const response = [r[0][0], r[1][0], r[2][0]];
-//         for (let i = 0; i < response.length; i++) {
-//           document.getElementById("cardName" + i).innerHTML = response[i].name;
-//           document.getElementById("cardDescription" + i).innerHTML =
-//             response[i].description;
-
-//           // Call the fetchAndInsertThreeRandomImages function to fetch and insert images
-//           fetchAndInsertThreeRandomImages();
-//         }
-//       });
-//     })
-//     .catch((e) => {
-//       console.log(e);
-//     });
-
-//   fetch("https://api.punkapi.com/v2/beers/random")
-//     .then((response) => response.json())
-//     .then((response) => {
-//       console.log(response);
-//       for (let i = 0; i < response.length; i++) {
-//         document.getElementById("cardName" + (i + 3)).innerHTML =
-//           response[i].name;
-//         document.getElementById("cardDescription" + (i + 3)).innerHTML =
-//           response[i].description;
-//         document.getElementById("cardPicture" + (i + 3)).innerHTML =
-//           response[i].image_url;
-//       }
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
-// randomFetches();
-
-// TRY TO DO ONE FETCH INSTEAD WITH PROMISE ALL
-
-// function randomFetches() {
-//   Promise.all([
-//     fetch("https://api.punkapi.com/v2/beers/random"),
-//     fetch("https://api.punkapi.com/v2/beers/random"),
-//     fetch("https://api.punkapi.com/v2/beers/random"),
-//   ])
-//     .then((responses) => {
-//       const jsonData = [];
-//       for (const response of responses) {
-//         jsonData.push(response.json());
-//       }
-//       const response = jsonData[0][0];
-//       for (let i = 0; i < 3; i++) {
-//         document.getElementById(`cardName${i + 1}`).innerHTML =
-//           response[i].name;
-//         document.getElementById(`cardDescription${i + 1}`).innerHTML =
-//           response[i].description;
-//         document.getElementById(`cardPicture${i + 1}`).innerHTML =
-//           response[i].image_url;
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// }
-
-// randomFetches();
