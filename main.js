@@ -238,6 +238,9 @@ function randomFetches() {
 
           document.getElementById("cardPicture" + i).innerHTML =
             response[i].image_url;
+          // const img = document.createElement("img");
+          // img.src = res[i].image_url;
+          // img.style = "height: 75vh";
         }
       });
     })
