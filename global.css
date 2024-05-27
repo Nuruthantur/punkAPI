@@ -3,7 +3,12 @@ body {
     font-size: 1.6rem;
     line-height: 2rem;
 }
-
+.wrapper{
+    word-break: break-all;
+}
+.btn-outline-secondary{
+    padding: 2px;
+}
 #target {
     background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2015/07/26/763366/18671f627a2382e91623ba85f6d90522.jpg);
     background-size: cover;

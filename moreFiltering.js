@@ -69,8 +69,6 @@ function fillFoodPairings(result) {
   });
 }
 
-/////////////////////////
-
 function createListeners(beerArray) {
   // PUTTING THE INPUTS IN  //
   const beerSelect = document.getElementById("beerNameSelect");
@@ -92,7 +90,8 @@ function createListeners(beerArray) {
     }
   });
 
-  //    FOOD PAIRING SELECT LISTENER    //
+  //    FOOD PAIRING SELECT LISTENER
+
   beerFoodPairing.addEventListener("change", (event) => {
     checkingAllValues(allInputs);
     const resultFood = filterArrayByFood(event.target.value, beerArray);
@@ -105,7 +104,8 @@ function createListeners(beerArray) {
     }
   });
 
-  //    CLEAR BUTTON GOES HERE    //
+  //    CLEAR BUTTON GOES HERE
+
   const button = document.getElementById("clearButton");
   button.addEventListener("click", () => {
     beerFoodPairing.value = "all";
@@ -126,12 +126,13 @@ function filterArrayByName(selectedValue, beerArray) {
 }
 
 // YOU NEED TO LOOP BECAUSE IT'S AN ARRAY AND NOT A STRING!
+
 function filterArrayByFood(selectedValue, beerArray) {
   if (selectedValue === "all") {
     return beerArray;
   } else {
     const filteredByFood = beerArray.filter((b) => {
-      return b.food_pairing === selectedValue;
+      return b.food_pairing === selectedValue; //.includes()
     });
     return filteredByFood;
   }
